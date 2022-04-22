@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ShoppingCart.module.css";
 import { FiShoppingCart } from "react-icons/fi";
 import { appContext } from "../AppState";
+
 interface Props {}
 interface State {
   isOpen: boolean;

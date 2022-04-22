@@ -2,6 +2,7 @@ import React, { PropsWithChildren, useEffect, useState } from "react";
 import logo from "./assets/images/logo.svg";
 import styles from "./App.module.css";
 import Robot from "./components/Robot";
+import RobotDiscount from "./components/RobotDiscount";
 import ShoppingCart from "./components/ShoppingCart";
 //初始化->构建函数 ->getDeriverdStateFromProps->render():渲染UI->componentDidMount
 //getDeriverdStateFromProps->shouldComponentUpdate->render():渲染UI->更新->componentDidUpdate
@@ -90,9 +91,13 @@ const App: React.FC<Props> = (props) => {
         {(!error || error !== "") && <div>网站出错：{error}</div>}
         {!loading ? (
           <div className={styles.robotList}>
-            {robotGallery.map((s) => (
-              <Robot id={s.id} email={s.email} name={s.name} />
-            ))}
+            {robotGallery.map((s, index) =>
+              index % 2 === 0 ? (
+                <Robot id={s.id} email={s.email} name={s.name} />
+              ) : (
+                <RobotDiscount id={s.id} email={s.email} name={s.name} />
+              )
+            )}
           </div>
         ) : (
           <h2>loading 加载中</h2>
